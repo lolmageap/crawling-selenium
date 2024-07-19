@@ -49,11 +49,11 @@ fun Application.configureDatabases() {
         }
     }
     val database = Database.connect(
-        url = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1",
-        user = "root",
-        driver = "org.h2.Driver",
-        password = ""
-    )
+            url = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1",
+            user = "root",
+            driver = "org.h2.Driver",
+            password = ""
+        )
     val userService = UserService(database)
     routing {
         // Create user
@@ -63,7 +63,7 @@ fun Application.configureDatabases() {
             call.respond(HttpStatusCode.Created, id)
         }
 
-        // Read user
+            // Read user
         get("/users/{id}") {
             val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
             val user = userService.read(id)
@@ -74,7 +74,7 @@ fun Application.configureDatabases() {
             }
         }
 
-        // Update user
+            // Update user
         put("/users/{id}") {
             val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
             val user = call.receive<ExposedUser>()
@@ -82,7 +82,7 @@ fun Application.configureDatabases() {
             call.respond(HttpStatusCode.OK)
         }
 
-        // Delete user
+            // Delete user
         delete("/users/{id}") {
             val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
             userService.delete(id)
