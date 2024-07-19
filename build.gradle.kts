@@ -1,3 +1,4 @@
+
 val kotlin_version: String by project
 val logback_version: String by project
 val postgres_version: String by project
@@ -29,6 +30,7 @@ dependencies {
     implementation("io.ktor:ktor-server-content-negotiation-jvm")
     implementation("io.ktor:ktor-serialization-jackson-jvm")
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
+    implementation("org.seleniumhq.selenium:selenium-java:4.22.0")
     implementation("org.postgresql:postgresql:$postgres_version")
     implementation("com.h2database:h2:$h2_version")
     implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
