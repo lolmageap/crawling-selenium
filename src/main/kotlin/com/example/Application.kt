@@ -12,4 +12,5 @@ fun Application.module() {
     configureDatabases()
     configureRouting()
     configureCrawling()
+    configureDependencyInjection()
 }
