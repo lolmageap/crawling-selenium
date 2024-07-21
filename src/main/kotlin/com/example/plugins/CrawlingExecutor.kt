@@ -18,7 +18,7 @@ class CrawlingExecutor {
             for (i in 1 until 4) {
                 val xpath = By.xpath("//*[@id=\"rso\"]/div[$i]")
                 val doc = driver.findElement(xpath)
-                println(doc.text)
+                println("${i}번째 게시물 : ${doc.text}")
             }
         }
     }
