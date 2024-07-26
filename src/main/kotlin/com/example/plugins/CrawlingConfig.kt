@@ -1,5 +1,7 @@
 package com.example.plugins
 
+import com.example.util.Options
+import com.example.util.WebDriver
 import io.ktor.server.application.*
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
@@ -15,4 +17,8 @@ val options = ChromeOptions().apply {
     addArguments(Options.DISABLE_DEFAULT_APPS)
 }
 
-val driver = ChromeDriver(options)
+val drivers = mutableListOf<ChromeDriver>()
+fun newChrome() =
+    ChromeDriver(options).also {
+        drivers.add(it)
+    }
