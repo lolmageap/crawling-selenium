@@ -1,7 +1,7 @@
 package com.example.api
 
 import com.example.model.SearchRequest
-import com.example.plugins.CrawlingExecutor
+import com.example.executor.CrawlingExecutor
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
