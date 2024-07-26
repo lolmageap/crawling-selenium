@@ -3,6 +3,8 @@ package com.example.plugins
 import com.example.util.Options
 import com.example.util.WebDriver
 import io.ktor.server.application.*
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.withContext
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 
@@ -18,7 +20,11 @@ val options = ChromeOptions().apply {
 }
 
 val drivers = mutableListOf<ChromeDriver>()
-fun newChrome() =
+fun newDriver() =
     ChromeDriver(options).also {
         drivers.add(it)
     }
+
+suspend fun ChromeDriver.access(
+    url: String,
+) = withContext(IO) { get(url) }

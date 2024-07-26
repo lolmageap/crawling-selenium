@@ -1,5 +1,7 @@
-package com.example.plugins
+package com.example.executor
 
+import com.example.plugins.access
+import com.example.plugins.newDriver
 import com.example.util.Url.GOOGLE
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
@@ -10,13 +12,13 @@ class CrawlingExecutor {
         keyword: String,
     ) {
         val url = GOOGLE + keyword
+        val driver = newDriver()
+        driver.access(url)
 
-        val driver = newChrome()
-        driver.get(url)
         withContext(IO) {
             for (i in 1 until 4) {
                 val xpath = By.xpath("//*[@id=\"rso\"]/div[$i]")
-                val doc = newChrome().findElement(xpath)
+                val doc = driver.findElement(xpath)
                 println("${i}번째 게시물 : ${doc.text}")
             }
         }
