@@ -9,8 +9,10 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
     configureSerialization()
-    configureDatabases()
     configureRouting()
     configureCrawling()
     configureDependencyInjection()
+    environment.monitor.subscribe(ApplicationStopPreparing) {
+        configureStopApplication()
+    }
 }
