@@ -1,4 +1,4 @@
-package com.example.plugins
+package com.example.util
 
 object Options {
     const val BINARY = ""

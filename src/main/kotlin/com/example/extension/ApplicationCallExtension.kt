@@ -1,4 +1,4 @@
-package com.example.plugins
+package com.example.extension
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.ktor.http.*
